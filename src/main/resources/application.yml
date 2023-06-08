@@ -1,0 +1,40 @@
+spring:
+  datasource:         # Oracle dataSource 
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@dblab_tp?TNS_ADMIN=C:/Oracle/Wallet_DBLab    # use Oracle Wallet
+#    url: jdbc:oracle:thin:@(description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=...))(connect_data=(service_name=...))(security=(ssl_server_dn_match=yes)))
+    username: ss230202
+    password: Spring_84035
+    hikari:           
+      maximumPoolSize: 3
+      connectionTimeout: 3000
+  mvc:  
+    view:             # JSP views
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+  devtools:
+    livereload:
+      enabled: 'true'
+      
+mybatis:
+  type-aliases-package: com.spring.mugpet.domain
+  configuration:
+    cache-enabled: false            #true    #default    
+#  mapper-locations: com/example/jpetstore/dao/mybatis/mapper/**/*.xml
+  
+logging:
+  level:
+    com:
+      spring:
+        mugpet:
+          dao:
+            mybatis:
+              mapper: DEBUG           
+  
+server:
+  port: 8080
+  tomcat: 
+    additional-tld-skip-patterns: 
+      - oraclepki.jar
+      - osdt_core.jar
+      - osdt_cert.jar         
